@@ -1,0 +1,13 @@
+<launch>
+
+<group ns="static_tf">
+    <node name="base_to_laser_tf2" pkg="tf2_ros" type="static_transform_publisher"
+        args="0.1 0.0 0.30 0.0 0.0 0.0 base_link laser" />
+</group>
+
+
+<arg name="map" default="$(find racecar_simulator)/maps/ucsd_atkinson_6f_icra2019_fx_net.yaml"/>
+<node pkg="map_server" name="map_server" type="map_server" args="$(arg map)">
+  <param name="frame_id" value="map"/>
+</node>
+</launch>
